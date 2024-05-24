@@ -94,7 +94,6 @@ Functions: ut_solv, ut_reconstr are needed and should be downloaded through U-ti
 - `Maximum_NTR_events_for_each_POT_RF_for_”Selected_accumulation_time”_RF_acc.mat`:-structure [Time_NTR.Max_NTR.Time_RF.POT_RF]
 
 ## 5. Stratification
-
 **Description**: The two conditional samples are stratified into two sets as: 1. The events caused by Tropical cyclones 2. The events that were not caused by tropical cyclones. The Hurdat 2  data set is used to identify the events induced by tropical cylcones.
     
 5.1 Conditioned on NTR
@@ -115,6 +114,9 @@ Functions: ut_solv, ut_reconstr are needed and should be downloaded through U-ti
 - `Maximum_NTR_events_for_each_POT_RF_for_”Selected_accumulation_time”_RF_acc.mat`:-structure [Time_NTR.Max_NTR.Time_RF.POT_RF]
 - `Cyclone_Track_data_from_1850.mat`:- [date-time, lat, lon, speed, distance from the city]
 
+**output**: 
+- `TC_events_conditioning_POT_RF.mat`:- structure[event.[Time_NTR,NTR,Time_RF,RF]
+- `ETC_events_conditioning_POT_RF.mat`:- structure[event.[Time_NTR,NTR,Time_RF,RF]
 
 
 ## 6. Return period estimation and events generation
@@ -139,18 +141,6 @@ Functions: ut_solv, ut_reconstr are needed and should be downloaded through U-ti
 - `l_b_R`F = Lover bound of discretized RF space for combining two populations;
 - `U_b_RF` = Upper bound of discretized RF space for combining two populations;
 - `RL_NTR`, - `RL_RF` = calculated combined return level vectors for a given return period in the vector Q_RP
-
-**output**: 
-- `TC_events_conditioning_POT_NTR.mat`:- structure[event.[Time_NTR,NTR,Time_RF,RF]
-- `ETC_events_conditioning_POT_NTR.mat`:- structure[event.[Time_NTR,NTR,Time_RF,RF]
-
-5.2 Conditioned on RF
-- **`Scripts/Stratification_Con_RF.m`**
-
-**Input**:
-- `Maximum_NTR_events_for_each_POT_RF_for_”Selected_accumulation_time”_RF_acc.mat`:-structure [Time_NTR.Max_NTR.Time_RF.POT_RF]
-- `Cyclone_Track_data_from_1850.mat`:- [date-time, lat, lon, speed, distance from the city]
-
 
 
 **output**: 
