@@ -2,7 +2,7 @@
 
 # The statistical framework for generating boundary conditions for compound flood models
 
-This directory contains MATLAB scripts used for estimating the return periods of compound flood drivers in coastal regions, focusing on the mixed populations (tropical cyclones (TCs) and non-tropical cyclones (non-TCs)). The methodology and results are detailed in the paper "[Funding rules that promote equity in climate adaptation outcomes]([https://osf.io/preprints/osf/6ewmu])."
+This directory contains MATLAB scripts used for estimating the return periods of compound flood drivers in coastal regions, focusing on the mixed populations (tropical cyclones (TCs) and non-tropical cyclones (non-TCs)). The methodology and results are detailed in the paper "[Funding rules that promote equity in climate adaptation outcomes](https://osf.io/preprints/osf/6ewmu)."
 
 <br>
 
