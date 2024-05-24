@@ -139,7 +139,7 @@ Functions: ut_solv, ut_reconstr are needed and should be downloaded through U-ti
 - `l_b_R`F = Lover bound of discretized RF space for combining two populations;
 - `U_b_RF` = Upper bound of discretized RF space for combining two populations;
 - `RL_NTR`, - `RL_RF` = calculated combined return level vectors for a given return period in the vector Q_RP
-- 
+
 **output**: 
 - `TC_events_conditioning_POT_NTR.mat`:- structure[event.[Time_NTR,NTR,Time_RF,RF]
 - `ETC_events_conditioning_POT_NTR.mat`:- structure[event.[Time_NTR,NTR,Time_RF,RF]
@@ -154,5 +154,4 @@ Functions: ut_solv, ut_reconstr are needed and should be downloaded through U-ti
 
 
 **output**: 
-- `TC_events_conditioning_POT_RF.mat`:- structure[event.[Time_NTR,NTR,Time_RF,RF]
-- `ETC_events_conditioning_POT_RF.mat`:- structure[event.[Time_NTR,NTR,Time_RF,RF]
+- `Design_events_Cropped_Irene_.mat`:- structure[WL,RF,RP,Tide,NTR]
