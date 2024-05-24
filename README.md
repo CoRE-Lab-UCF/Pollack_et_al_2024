@@ -2,7 +2,7 @@
 
 # The statistical framework for mixed populations in compound flood analysis
 
-This directory contains MATLAB and R scripts used for estimating the joint probabilities in coastal regions, focusing on the mixed populations (tropical cyclones (TCs) and non-tropical cyclones (non-TCs)). The methodology and results are detailed in the paper "[Funding rules that promote equity in climate adaptation outcomes]([https://osf.io/preprints/osf/6ewmu])."
+This directory contains MATLAB scripts used for estimating the return periods of compound flood drivers in coastal regions, focusing on the mixed populations (tropical cyclones (TCs) and non-tropical cyclones (non-TCs)). The methodology and results are detailed in the paper "[Funding rules that promote equity in climate adaptation outcomes]([https://osf.io/preprints/osf/6ewmu])."
 
 <br>
 
@@ -114,6 +114,44 @@ Functions: ut_solv, ut_reconstr are needed and should be downloaded through U-ti
 **Input**:
 - `Maximum_NTR_events_for_each_POT_RF_for_”Selected_accumulation_time”_RF_acc.mat`:-structure [Time_NTR.Max_NTR.Time_RF.POT_RF]
 - `Cyclone_Track_data_from_1850.mat`:- [date-time, lat, lon, speed, distance from the city]
+
+
+
+## 6. Return period estimation and events generation
+
+**Description**: The stratified conditional samples are fitted with Generalized Pareto Distributions to estimate the return periods: 1. The following "XXX_main.mat" program is used for generating the scaled events based on the return periods calculated through the function "Uni_Return_level_calc.mat". 
+    
+- **`Scripts/Univariate_event_generation_main.m`**
+- **`Scripts/Uni_Return_level_calc.m`**
+
+
+**Input**: 
+- `ET_NTR` = vector of POT Non-TC events conditioned on NTR [time_NTR, NTR, Time_RF,RF]
+- `TC_NTR` = vector of POT TC events conditioned on NTR [time_NTR, NTR,Time_RF,RF]
+- `ET_RF` = vector of POT Non-TC events conditioned on RF [time_NTR, NTR,Time_RF,RF]
+- `TC_RF` = vector of POT TC events conditioned on RF [time_NTR, NTR,Time_RF,RF]
+- `Thres_NTR` = single numeric vector of NTR threshold
+- `Thres_RF` = single numeric vector of RF threshold
+- `n_years` = Total number of years
+- `Q_RP` = Vector of Return periods of interest
+- `l_b_NTR` = Lover bound of discretized NTR space for combining two populations;
+- `U_b_NTR` = Upper bound of discretized NTR space for combining two populations;
+- `l_b_R`F = Lover bound of discretized RF space for combining two populations;
+- `U_b_RF` = Upper bound of discretized RF space for combining two populations;
+- `RL_NTR`, - `RL_RF` = calculated combined return level vectors for a given return period in the vector Q_RP
+- 
+**output**: 
+- `TC_events_conditioning_POT_NTR.mat`:- structure[event.[Time_NTR,NTR,Time_RF,RF]
+- `ETC_events_conditioning_POT_NTR.mat`:- structure[event.[Time_NTR,NTR,Time_RF,RF]
+
+5.2 Conditioned on RF
+- **`Scripts/Stratification_Con_RF.m`**
+
+**Input**:
+- `Maximum_NTR_events_for_each_POT_RF_for_”Selected_accumulation_time”_RF_acc.mat`:-structure [Time_NTR.Max_NTR.Time_RF.POT_RF]
+- `Cyclone_Track_data_from_1850.mat`:- [date-time, lat, lon, speed, distance from the city]
+
+
 
 **output**: 
 - `TC_events_conditioning_POT_RF.mat`:- structure[event.[Time_NTR,NTR,Time_RF,RF]
