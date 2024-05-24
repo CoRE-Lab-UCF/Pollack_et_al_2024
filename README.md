@@ -41,7 +41,7 @@ This directory contains MATLAB scripts used for estimating the return periods of
 
    
 
-### 3. 	Defining peak over threshold extreme events
+### 3. 	Defining peak-over-threshold extreme events
 - **`Scripts/Creating_POT_Extremes_NTR.m`**
 
 **Description**: The script uses the Peak over threshold (POT) approach to define events over thresholds for non-tidal residuals (NTR).
@@ -94,7 +94,7 @@ Functions: ut_solv, ut_reconstr are needed and should be downloaded through U-ti
 - `Maximum_NTR_events_for_each_POT_RF_for_”Selected_accumulation_time”_RF_acc.mat`:-structure [Time_NTR.Max_NTR.Time_RF.POT_RF]
 
 ## 5. Stratification
-**Description**: The two conditional samples are stratified into two sets as: 1. The events caused by Tropical cyclones 2. The events that were not caused by tropical cyclones. The Hurdat 2  data set is used to identify the events induced by tropical cylcones.
+**Description**: The two conditional samples are stratified into two sets as: 1. The events caused by Tropical cyclones 2. The events that were not caused by tropical cyclones. The Hurdat 2  data set is used to identify the events induced by tropical cyclones.
     
 5.1 Conditioned on NTR
 - **`Scripts/Stratification_Con_NTR.m`**
@@ -145,3 +145,7 @@ Functions: ut_solv, ut_reconstr are needed and should be downloaded through U-ti
 
 **output**: 
 - `Design_events_Cropped_Irene_.mat`:- structure[WL,RF,RP,Tide,NTR]
+
+The Cropped events are used as boundary conditions for the compound flood model. 
+
+
