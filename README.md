@@ -119,15 +119,17 @@ Functions: ut_solv, ut_reconstr are needed and should be downloaded through U-ti
 - `ETC_events_conditioning_POT_RF.mat`:- structure[event.[Time_NTR,NTR,Time_RF,RF]
 
 
-## 6. Return period estimation and events generation
 
-**Description**: The stratified conditional samples are fitted with Generalized Pareto Distributions to estimate the return periods: 1. The following "XXX_main.mat" program is used for generating the scaled events based on the return periods calculated through the function "Uni_Return_level_calc.mat". 
+## 6. Return period estimation with confidence interval
+
+**Description**: The stratified conditional samples are fitted with Generalized Pareto Distributions to estimate the return periods: 1. The following "XXX_main.mat" program is used for generating the scaled events based on the return periods calculated through the function "Uni_Return_level_calc_with_boostrap.mat". 
     
 - **`Scripts/Univariate_event_generation_main.m`**
-- **`Scripts/Uni_Return_level_calc.m`**
+- **`Scripts/Uni_Return_level_calc_with_bootstrap.m`**
 
 
 **Input**: 
+- `n_sim` = number of Bootstrapping samples required [number]
 - `ET_NTR` = vector of POT Non-TC events conditioned on NTR [time_NTR, NTR, Time_RF,RF]
 - `TC_NTR` = vector of POT TC events conditioned on NTR [time_NTR, NTR,Time_RF,RF]
 - `ET_RF` = vector of POT Non-TC events conditioned on RF [time_NTR, NTR,Time_RF,RF]
@@ -144,8 +146,17 @@ Functions: ut_solv, ut_reconstr are needed and should be downloaded through U-ti
 
 
 **output**: 
-- `Design_events_Cropped_Irene_.mat`:- structure[WL,RF,RP,Tide,NTR]
+- `RL_NTR_com.mat`:- combined return levels of NTR, for return periods from 0 to 500 in 0.1 interval
+- `RL_RF_com.mat`:- combined return levels of RF, for return periods from 0 to 500 in 0.1 interval
+- `RL_TC_NTR.mat`:- return levels of TC induced NTR, for return periods from 0 to 500 in 0.1 intervals, for each bootstrapped sample
+- `RL_ETC_NTR.mat`:- return levels of non-TC induced NTR, for return periods from 0 to 500 in 0.1 intervals, for each bootstrapped sample
+- `RL_TC_RF.mat`:- return levels of TC-induced RF, for return periods from 0 to 500 in 0.1 intervals, for each bootstrapped sample
+- `RL_ETC_RF.mat`:- return levels of non-TC induced RF, for return periods from 0 to 500 in 0.1 intervals, for each bootstrapped sample
+- `RP_NTR.mat`:- vector of return periods considered [1:0.1:500]
+- `RP_RF.mat`:- vector of return periods considered [1:0.1:500]
 
+- `Design_events_Cropped_Irene_.mat`:- structure[WL,RF,RP,Tide,NTR]
+  
 The Cropped events are used as boundary conditions for the compound flood model. 
 
 
