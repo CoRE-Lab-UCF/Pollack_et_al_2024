@@ -35,13 +35,13 @@ TC_RF=table2array(struct2table(Tropical_Cyclones(18).Event));
 % Thres_RF = single numeric vector of RF threshold
 % n_years = Total number of years
 % Q_RP = Vector of Return periods of interest
-% l_b_NTR = Lover bound of desctritized NTR space for combining two populations;
-% U_b_NTR = Upper bound of desctritized NTR space for combining two populations;
-% l_b_RF = Lover bound of desctritized RF space for combining two populations;
-% U_b_RF = Upper bound of desctritized RF space for combining two populations;
-% RL_NTR, RL_RF = calculated combinde return level vectors for given return
+% l_b_NTR = Lover bound of discretized NTR space for combining two populations;
+% U_b_NTR = Upper bound of discretized NTR space for combining two populations;
+% l_b_RF = Lover bound of discretized RF space for combining two populations;
+% U_b_RF = Upper bound of discretized RF space for combining two populations;
+% RL_NTR, RL_RF = calculated combined return level vectors for a given return
 % perios in the vector Q_RP
-% n_sim = numbre of simulation
+% n_sim = number of bootstrapped samples needed
 
 [RL_NTR_com,RL_RF_com, RL_TC_NTR, RL_ETC_NTR, RL_TC_RF, RL_ETC_RF,RP_NTR,RP_RF]=Uni_Return_level_calc_with_boostrap_new(n_sim,ET_NTR,TC_NTR,ET_RF,TC_RF, Thres_NTR, Thres_RF,n_years,Q_RP,l_b_NTR,U_b_NTR,l_b_RF,U_b_RF);
 
@@ -119,10 +119,10 @@ Peak_hour =Ex_events_TC(Rank,1);
 Max_RF = Ex_events_TC(Rank,4);
 %Max_RF_hour = Ex_events_TC(Rank,3);
 
-% loadting NTR and RF data files
+% loading NTR and RF data files
 NTR=load("***Path***\POT_NTR_and_NTR_timeseries_for_Philli_airport.mat");
 RF_Field = load("***Path***\AORC_Gloucester_city_cliped_data.mat");
-% importing basin avearge AORC Data 
+% importing basin average AORC Data 
 AORC = load("***Path***\Hourly_accumulation_RF_data_Gloucester_City_AORC.mat");
 AORC=AORC.Data;
 
@@ -150,7 +150,7 @@ BA_AORC_event_hourly = BA_AORC_hourly(ind_peak_RF-36:ind_peak_RF+35,1:2);
 
 
 
-%% Scalling RF and NTR of the event (95% upper margin)
+%% Scaling RF and NTR of the event (95% upper margin)
 
 
 % for 95th Percentile
@@ -165,7 +165,7 @@ for i=1:length(RL_RF_Q_95)
     min_NTR = min(Day_3_ntr(:,2));
     Day_3_ntr_datum_adj = Day_3_ntr(:,2)+abs(min_NTR);
     
-    % calculating the scalling factor
+    % calculating the scaling factor
     Scale_NTR(i,1) = (RL_NTR_Q_95(1,i)+abs(min_NTR))/(Max_NTR+abs(min_NTR));
     Design_NTR_scaled(i).event = [Day_3_ntr(:,1) (Day_3_ntr_datum_adj.*Scale_NTR(i,1)-abs(min_NTR))];
   
@@ -220,9 +220,9 @@ end
 
 
 
-    %% Select the starting and eneding time manually
+    %% Select the starting and ending time manually
     st = 14;
-    endd = 50 ; %these hours were checked and selected manualy
+    endd = 50 ; %these hours were checked and selected manually
 for i=1:length(RL_NTR_Q_95)
 
     Design_events(i).WL = Data.Design_event(i).event.Water_level(st:endd);
@@ -239,7 +239,7 @@ save((['Design_events_Cropped_95%_CI_U_',Cycl_name{Rank}]),'Design_events');
 
 
 
-%% Scalling RF and NTR of the event (95% Lower margin)
+%% Scaling RF and NTR of the event (95% Lower margin)
 
 % Creating Scaled Rainfall Field
 Hour_no=28;
@@ -258,10 +258,10 @@ Peak_hour =Ex_events_TC(Rank,1);
 Max_RF = Ex_events_TC(Rank,4);
 %Max_RF_hour = Ex_events_TC(Rank,3);
 
-% loadting NTR and RF data files
+% loading NTR and RF data files
 NTR=load("***Path***\POT_NTR_and_NTR_timeseries_for_Philli_airport.mat");
 RF_Field = load("***Path***\AORC_Gloucester_city_cliped_data.mat");
-% importing basin avearge AORC Data 
+% importing basin average AORC Data 
 AORC = load("***Path***\Hourly_accumulation_RF_data_Gloucester_City_AORC.mat");
 AORC=AORC.Data;
 
@@ -300,7 +300,7 @@ for i=1:length(RL_RF_Q_05)
     min_NTR = min(Day_3_ntr(:,2));
     Day_3_ntr_datum_adj = Day_3_ntr(:,2)+abs(min_NTR);
     
-    % calculating the scalling factor
+    % calculating the scaling factor
     Scale_NTR(i,1) = (RL_NTR_Q_05(1,i)+abs(min_NTR))/(Max_NTR+abs(min_NTR));
     Design_NTR_scaled(i).event = [Day_3_ntr(:,1) (Day_3_ntr_datum_adj.*Scale_NTR(i,1)-abs(min_NTR))];
   
@@ -346,9 +346,9 @@ WL_raw = NTR.POT_NTR_and_NTR_timeseries.WL_raw(WL_raw_ind-36:WL_raw_ind+35);
 MA_wl = NTR.POT_NTR_and_NTR_timeseries.MovA_WL(WL_raw_ind-36:WL_raw_ind+35);
 
 
- %% Select the starting and eneding time manually
+ %% Select the starting and ending time manually
     st = 14;
-    endd = 50 ; %these hours were checked and selected manualy
+    endd = 50 ; %these hours were checked and selected manually
 for i=1:length(RL_NTR_Q_05)
 
     Design_events(i).WL = Data.Design_event(i).event.Water_level(st:endd);
