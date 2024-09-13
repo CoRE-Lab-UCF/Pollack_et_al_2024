@@ -119,10 +119,41 @@ Functions: ut_solv, ut_reconstr are needed and should be downloaded through U-ti
 - `ETC_events_conditioning_POT_RF.mat`:- structure[event.[Time_NTR,NTR,Time_RF,RF]
 
 
+## 6. Return period estimation from most likely estimate
 
-## 6. Return period estimation with confidence interval
+**Description**: The stratified conditional samples are fitted with Generalized Pareto Distributions to estimate the return periods: 1. The following "XXX_main.mat" program is used for generating the scaled events based on the return periods calculated through the function "Uni_Return_level_calc.mat". 
+    
+- **`Scripts/Univariate_event_generation_main.m`**
+- **`Scripts/Uni_Return_level_calc.m`**
 
-**Description**: The stratified conditional samples are fitted with Generalized Pareto Distributions to estimate the return periods: 1. The following "XXX_main.mat" program is used for generating the scaled events based on the return periods calculated through the function "Uni_Return_level_calc_with_boostrap.mat". 
+
+**Input**: 
+- `n_sim` = number of Bootstrapping samples required [number]
+- `ET_NTR` = vector of POT Non-TC events conditioned on NTR [time_NTR, NTR, Time_RF,RF]
+- `TC_NTR` = vector of POT TC events conditioned on NTR [time_NTR, NTR,Time_RF,RF]
+- `ET_RF` = vector of POT Non-TC events conditioned on RF [time_NTR, NTR,Time_RF,RF]
+- `TC_RF` = vector of POT TC events conditioned on RF [time_NTR, NTR,Time_RF,RF]
+- `Thres_NTR` = single numeric vector of NTR threshold
+- `Thres_RF` = single numeric vector of RF threshold
+- `n_years` = Total number of years
+- `Q_RP` = Vector of Return periods of interest
+- `l_b_NTR` = Lover bound of discretized NTR space for combining two populations;
+- `U_b_NTR` = Upper bound of discretized NTR space for combining two populations;
+- `l_b_R`F = Lover bound of discretized RF space for combining two populations;
+- `U_b_RF` = Upper bound of discretized RF space for combining two populations;
+
+
+**output**: 
+
+- `RL_NTR.mat`:- combined return levels of NTR, for return periods from 0 to 500 in 0.1 interval
+- `RL_RF.mat`:- Combined return levels of RF, for return periods from 0 to 500 in 0.1 interval
+
+- `Design_events_Cropped_Irene_.mat`:- structure[WL,RF,RP,Tide,NTR]
+
+
+## 7. Return period estimation for the confidence interval
+
+**Description**: The stratified conditional samples are fitted with Generalized Pareto Distributions to estimate the return periods: 1. The following "XXX_main_bootstrap.mat" program is used for generating the scaled events based on the return periods calculated through the function "Uni_Return_level_calc_with_boostrap.mat". 
     
 - **`Scripts/Univariate_event_generation_main.m`**
 - **`Scripts/Uni_Return_level_calc_with_bootstrap.m`**
