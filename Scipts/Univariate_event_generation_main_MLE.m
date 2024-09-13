@@ -28,8 +28,7 @@ clc
 % U_b_NTR = Upper bound of discretized NTR space for combining two populations;
 % l_b_RF = Lover bound of discretized RF space for combining two populations;
 % U_b_RF = Upper bound of discretized RF space for combining two populations;
-% RL_NTR, RL_RF = calculated combined return level vectors for a given return
-% perios in the vector Q_RP
+% RL_NTR, RL_RF = calculated combined return level vectors for a given return periods in the vector Q_RP
 
 
 load("***Path***\ETC_events_conditioning_POT_NTR.mat");
