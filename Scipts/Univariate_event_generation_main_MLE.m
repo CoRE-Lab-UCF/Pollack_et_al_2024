@@ -24,11 +24,11 @@ clc
 % Thres_RF = single numeric vector of RF threshold
 % n_years = Total number of years
 % Q_RP = Vector of Return periods of interest
-% l_b_NTR = Lover bound of desctritized NTR space for combining two populations;
-% U_b_NTR = Upper bound of desctritized NTR space for combining two populations;
-% l_b_RF = Lover bound of desctritized RF space for combining two populations;
-% U_b_RF = Upper bound of desctritized RF space for combining two populations;
-% RL_NTR, RL_RF = calculated combinde return level vectors for given return
+% l_b_NTR = Lover bound of discretized NTR space for combining two populations;
+% U_b_NTR = Upper bound of discretized NTR space for combining two populations;
+% l_b_RF = Lover bound of discretized RF space for combining two populations;
+% U_b_RF = Upper bound of discretized RF space for combining two populations;
+% RL_NTR, RL_RF = calculated combined return level vectors for a given return
 % perios in the vector Q_RP
 
 
