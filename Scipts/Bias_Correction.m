@@ -10,14 +10,14 @@
 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% When calculating the threshold for the modeled data set matching the number of Dry hours with the measured data set, the hours with trace precipitation maybe need to be accounted. 
+% When calculating the threshold for the modeled data set matching the number of Dry hours with the measured data set, the hours with trace precipitation may need to be accounted for. 
 
 clear
 close all
 clc
 
 %Loading Data
-Pr_Measured = load("**Path**\Phlli_airport_RF_data_1901_to_2021.mat"); % Loading the measured data file [time, hourly RF]
+Pr_Measured = load("**Path**\Phlli_airport_RF_data_1901_to_2021.mat"); % Loading the measured data file [time, hourly RF] (with trace precipitation)
 Pr_Measured=Pr_Measured.Philli_airport_RF_data_1901_to_2021;
 AORC=load("**Path**\AORC_9_grid_loc_Gloucester.mat");% Loading the measured data file [time, hourly RF(grid1), hourly RF(grid2),...hourly RF(grid9)]
 
