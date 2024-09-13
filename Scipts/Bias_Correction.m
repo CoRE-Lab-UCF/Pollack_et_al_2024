@@ -10,13 +10,13 @@
 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% When calculating the threshold for the modeled data set matching the number of Dry hours with the measured data set, the hours with trace precipitation may needed to be accounted. 
+% When calculating the threshold for the modeled data set matching the number of Dry hours with the measured data set, the hours with trace precipitation maybe need to be accounted. 
 
 clear
 close all
 clc
 
-%Loading Dta
+%Loading Data
 Pr_Measured = load("**Path**\Phlli_airport_RF_data_1901_to_2021.mat"); % Loading the measured data file [time, hourly RF]
 Pr_Measured=Pr_Measured.Philli_airport_RF_data_1901_to_2021;
 AORC=load("**Path**\AORC_9_grid_loc_Gloucester.mat");% Loading the measured data file [time, hourly RF(grid1), hourly RF(grid2),...hourly RF(grid9)]
@@ -36,7 +36,7 @@ t=t';
 
 
 %% Finding the threshold
-%finding the index of begining of AORC data
+%finding the index of beginning of AORC data
 index=find(Pr_Measured(:,1)==datenum(t1));
 
 MS_Sorted = sort(Pr_Measured(index:end,2),'ascend');
@@ -69,5 +69,5 @@ Bias_corrected_MS(:,1)=Pr_Measured(:,1);
 
 % Saving the data file
 save("Bias Corrected MS at Philli airport_With_AORC_of_GC.mat","Bias_corrected_MS");
-% for St. Petersburg: save("Bias Corrected MS at St_Pete_With_AORC.mat","Bias_corrected_MS");
+
 
