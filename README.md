@@ -228,12 +228,12 @@ For this study, SFINCS is configurated to run using the subgrid approach and thu
 The output of this code is the maximum water depths from the simulation at 1m resolution ("'Max_WD_.mat'")
 
 **Input**: 
--`sfincs_map.nc`
--`dem_subgrid_1m_nbd.mat`
--`sfincs.inp`
+- `sfincs_map.nc`
+- `dem_subgrid_1m_nbd.mat`
+- `sfincs.inp`
 
 **Output**: 
--`'Max_WD_.mat'` 
+- `'Max_WD_.mat'` 
 
 **List of Functions Required from Open Earth Tools**: "deblank2.m", "downscale_zs.m", "mc_bute.m", "nc_char.m", "nc_double.m", "nc_float.m", "nc_getattsinfo_tmw.m", "nc_int.m", "nc_int64.m", "nc_nat.m", "nc_short.m", "nc_ubyte.m", "nc_unit.m", "nc_unit64.m", "nc_ushort.m", "nc_varget.m", "nc_varget_tmw.m", "nc_vargetr.m", "sfincs_get_values_for_dem.m", "sfincs_make_grid.m", sfincs_read_indices_for_dem.m", "sfincs_read_input.m", "snc_format.m", "snc_get_indexing.m", "snc_read_backend.m" 
 
