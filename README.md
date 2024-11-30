@@ -220,7 +220,7 @@ The boudary files of water levels and rainfall fields for SFINCS from the events
 ### 3. Model File & Running SFINCS
 
 In "Data_Flood_modeling" can be found one of the model files ("sfincs.inp") used for one of the SFINCS simulations. This file can be open with any text editor and contains all the information about the configuration of SFINCS used for this study. In order to run the different events, the fields "bzsfile" and "netamprfile" need to be modified accordingly with the name given to the water levels boudary file and rainfall field files generated from the previous section.  
-For this study, we used the Version 2.0.0 Alpe D'Huez Release 2022 (10.5281/zenodo.8038534).
+For this study, we used the Version 2.0.0 Alpe D'Huez Release 2022 (10.5281/zenodo.8038534) of SFINCS.
 
 ### 4. Downscaling floodplains to subgrid resolution
 
