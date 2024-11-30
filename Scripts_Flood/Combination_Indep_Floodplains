@@ -1,0 +1,51 @@
+close all
+clear all
+clc
+
+%% Combining Independent Drivers FLoodplains
+
+
+path_main_rain='**PATH_DOWNSCALED_PLIVIAL_FLOODPLAINS***';
+path_main_wl='**PATH_DOWNSCALED_PLIVIAL_FLOODPLAINS***';
+
+path_output='**PATH_TO_SAVE_RESULTS***';
+
+RPs=[1,2,5,10,15,20,25,50,75,100,200,500];
+
+for i=1:length(RPs)
+    
+    event=strcat("RP_",num2str(RPs(i),'%03.f'));
+    file_name_rain=strcat('Max_WD_Rain_',num2str(RPs(i),'%03.f'),'.mat');
+    file_name_wl=strcat('Max_WD_WL_',num2str(RPs(i),'%03.f'),'.mat');
+
+    output_name=strcat('Max_WD_Comb_',num2str(RPs(i),'%03.f'),'.mat');
+
+    data_rain=load(strcat(path_main_rain, event, '\', file_name_rain));
+    data_wl=load(strcat(path_main_wl, event, '\', file_name_wl));
+
+    rain=data_rain.h; wl=data_wl.h;
+
+    idata_rain=find(~isnan(rain(:)));
+    idata_wl=find(~isnan(wl(:)));
+
+    [C,iinter_rain,iinter_wl]=intersect(idata_rain,idata_wl);
+
+    iover_rain=idata_rain(iinter_rain);
+    iover_wl=idata_wl(iinter_wl);
+
+    if length(idata_rain)==length(iinter_rain) || length(idata_wl)==length(iinter_wl)
+
+    else
+        idata_rain(iinter_rain)=[]; idata_wl(iinter_wl)=[];
+    end
+
+    comb_flood=nan(size(wl));
+    comb_flood(idata_rain)=rain(idata_rain);
+    comb_flood(idata_wl)=wl(idata_wl);
+    comb_flood(iover_wl)=max([rain(iover_rain),wl(iover_wl)],[],2);
+
+    X=data_rain.X; Y=data_rain.Y;
+    
+    save(strcat(path_output,event, '\', output_name),'X','Y','comb_flood')
+clear idata_rain idata_wl iinter_rain iinter_wl iover_rain iover_wl rain wl
+end
