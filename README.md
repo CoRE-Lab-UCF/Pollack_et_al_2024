@@ -213,7 +213,7 @@ The boudary files of water levels and rainfall fields for SFINCS from the events
 - `Lat_lon_Time_Irene.mat`
 - `Gloucester_street_light_utm.tif` in "Data_Flood_modeling"
 
-**output**:
+**Output**:
 - `Rain_XXX.nc` (Rainfall field of event of RP XXX)
 - `sfincs.bzs`  (Water Level time series of RP XXX)
 
@@ -224,4 +224,19 @@ For this study, we used the Version 2.0.0 Alpe D'Huez Release 2022 (10.5281/zeno
 
 ### 4. Downscaling floodplains to subgrid resolution
 
+For this study, SFINCS is configurated to run using the subgrid approach and thus the outputs of the simulations ("sfincs_map.nc") can be downscaled to 1m resolution. For that, we use the Matlab script "SUBGRID_Downscale.m" in "Script_Flood" that was written with help of Marteen Van Ormondt. That script requires the DEM ("dem_subgrid_1m_nbd.mat" in "Data_Flood_Modeling") and a number of Matlab functions from the Open Earth Tools (https://svn.oss.deltares.nl/repos/openearthtools/trunk/matlab/applications/sfincs/ and https://svn.oss.deltares.nl/repos/openearthtools/trunk/matlab/io/netcdf/snctools/).
+The output of this code is the maximum water depths from the simulation at 1m resolution ("'Max_WD_.mat'")
 
+**Input**: 
+-`sfincs_map.nc`
+-`dem_subgrid_1m_nbd.mat`
+-`sfincs.inp`
+
+**Output**: 
+-`'Max_WD_.mat'` 
+
+**List of Functions Required from Open Earth Tools**: "deblank2.m", "downscale_zs.m", "mc_bute.m", "nc_char.m", "nc_double.m", "nc_float.m", "nc_getattsinfo_tmw.m", "nc_int.m", "nc_int64.m", "nc_nat.m", "nc_short.m", "nc_ubyte.m", "nc_unit.m", "nc_unit64.m", "nc_ushort.m", "nc_varget.m", "nc_varget_tmw.m", "nc_vargetr.m", "sfincs_get_values_for_dem.m", "sfincs_make_grid.m", sfincs_read_indices_for_dem.m", "sfincs_read_input.m", "snc_format.m", "snc_get_indexing.m", "snc_read_backend.m" 
+
+### 5. Combination of Coastal and Pluvial Floodplains
+
+In this study, the flood hazard is simulated separately for each driver and then their floodplains are combined using the Matlab script "
