@@ -1,0 +1,54 @@
+close all
+clear all
+clc
+
+
+%% Script to convert SFINCS max flood outputs to ArcGIS ascii file
+path_input='**PATH_WHERE_TO_THE_MATLAB_INPUTS_ARE**';
+path_output='**PATH_WHERE_TO_SAVE_THE_RESULTS**';
+
+folder='**PATH_WHERE_DEM_IS_SAVED';
+filename='dem_subgrid_1m_nbd.asc';
+
+try
+    elebat=importdata([folder filename],' ',6); %'\t'
+    heading=elebat.textdata;
+catch
+    elebat=importdata([folder filename],'\t',6); %'\t'
+    heading=elebat.textdata;
+end
+clear elebat
+
+RPs=[1,2,5,10,15,20,25,50,75,100,200,500];
+
+listEvents=dir(path_input);
+listEvents([1:2])=[];
+
+for j=1:length(listEvents)    
+
+
+    out_name=strcat('Max_WD_WL_',num2str(RPs(j),'%03.f'),'.mat');
+    out_name_ascii=strcat('Max_WD_WL_',num2str(RPs(j),'%03.f'),'.asc');
+    
+
+
+
+load([path_input out_name])
+
+% flipud h as ascii file starts from bottom left
+
+WDmax=flipud(comb_flood);
+WDmax(isnan(WDmax(:)))=-9999;
+
+
+%% Saving Results ArcGIS Ascii file format
+
+save([path_output out_name_ascii],'heading' ,'-ascii')
+
+ID=fopen([path_output out_name_ascii],'w')
+fprintf(ID,'%s\n',heading{:,1});
+fclose(ID)
+
+dlmwrite([path_output out_name_ascii],WDmax,'-append','delimiter','\t','precision','%.4f')
+end
+% end
