@@ -193,4 +193,28 @@ The Cropped events are used as boundary conditions for the compound flood model.
 
 # The Flood Hazard Modeling using SFINCS model
 
-In this section, we describe how to perfom the flood hazard analysis used in the paper "[Funding rules that promote equity in climate adaptation outcomes](https://osf.io/preprints/osf/6ewmu)." using the rainfall and water levels derived in the previous section. We used the SFINCS flood model, which is a free and open source flood model developed by Deltares and can be found (https://github.com/Deltares/SFINCS) 
+In this section, we describe how to perfom the flood hazard analysis used in the paper "[Funding rules that promote equity in climate adaptation outcomes](https://osf.io/preprints/osf/6ewmu)." using the rainfall and water levels derived in the previous section. We used the SFINCS flood model, which is an open access and open source flood model developed by Deltares and can be found (10.5281/zenodo.8038534, https://github.com/Deltares/SFINCS) 
+
+### 1. SFINCS SET UP
+
+Documentation about the SFINCS model and how to set it up can be found (https://sfincs.readthedocs.io/en/latest/index.html). 
+Information about the raw input data used to set up SFINCS and the sources of the data can be found in the Supporting Material of the paper *LINK TO SUP MAT*
+We used ArcGIS pro to preprocess the DEM (clip to catchments domain), the Delft Dashboard (Van Ormondt et al. 2020 https://doi.org/10.2166/hydro.2020.092), and the Open Earth Tools (https://svn.oss.deltares.nl/repos/openearthtools/trunk/matlab/applications/sfincs/) to generate some of the input files of SFINCS (DEM, Subgrid tables, and msk file). 
+To generate the Roughness file, we converted the land cover classes to Manning coefficients using the "Mean" value of the conversion table "Unique_Land_Classes_CN.xls" in the Data_Flood_Modeling. 
+The input model files of SFINCS for Gloucester City (NJ, US) used in this study can be downloaded from (https://doi.org/10.5281/zenodo.14251309).
+
+### 2. Boundary Conditions and Rainfall Forcing
+
+As explain in the methodlogy of "[Funding rules that promote equity in climate adaptation outcomes](https://osf.io/preprints/osf/6ewmu).", we simulated flooding from different return period events of extreme water levels and rainfall independtly. 
+The boudary files of water levels and rainfall fields for SFINCS from the events derived from the Statistical Framework can be generated using the Matlab script "SFINCS_BC_generator.m" and the function "sfincs_write_netcdf_amprfile.m" from the Open Earth Tools (https://svn.oss.deltares.nl/repos/openearthtools/trunk/matlab/applications/sfincs/). 
+
+**Input**: 
+- `Design_events_Cropped_Irene_.mat`
+- `Lat_lon_Time_Irene.mat`
+- `Gloucester_street_light_utm.tif` in "Data_Flood_modeling"
+
+  **output**:
+  - `Rain_XXX.nc` (Rainfall field of event of RP XXX)
+  - `sfincs.bzs`  (Water Level time series of RP XXX)
+
+  
