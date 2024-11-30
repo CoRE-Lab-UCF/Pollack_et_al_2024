@@ -11,6 +11,18 @@ cd(output_folder)
 %% To be done if DEM is not in .mat format
 dem_file_mat='dem_subgrid_1m_nbd.mat';
 
+if ~isfile(dem_file_mat)
+    % The following code needs to be run once to save the DEM as a MAT file.
+    % This loads in much faster than the ASCII dem.
+    disp('Converting DEM to MAT ...');
+    dem_file = 'dem_subgrid_1m_nbd.asc';
+    [high_x,high_y,high_z] = readArcInfo(dem_file);
+    s.x=high_x;
+    s.y=high_y;
+    s.z=high_z;
+    save(dem_file_mat,'-struct','s');
+end
+
 % Read input file and make grid
 disp('Reading sfincs.inp ...');
 inp=sfincs_read_input([output_folder 'sfincs.inp'],[]);
