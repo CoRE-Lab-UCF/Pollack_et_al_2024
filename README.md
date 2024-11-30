@@ -191,3 +191,6 @@ Functions: ut_solv, ut_reconstr are needed and should be downloaded through U-ti
 The Cropped events are used as boundary conditions for the compound flood model. 
 
 
+# The Flood Hazard Modeling using SFINCS model
+
+In this section, we describe how to perfom the flood hazard analysis used in the paper "[Funding rules that promote equity in climate adaptation outcomes](https://osf.io/preprints/osf/6ewmu)." using the rainfall and water levels derived in the previous section. We used the SFINCS flood model, which is a free and open source flood model developed by Deltares and can be found (https://github.com/Deltares/SFINCS) 
