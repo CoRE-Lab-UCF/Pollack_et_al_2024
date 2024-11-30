@@ -193,7 +193,7 @@ The Cropped events are used as boundary conditions for the compound flood model.
 
 # The Flood Hazard Modeling using SFINCS model
 
-In this section, we describe how to perfom the flood hazard analysis used in the paper "[Funding rules that promote equity in climate adaptation outcomes](https://osf.io/preprints/osf/6ewmu)." using the rainfall and water levels derived in the previous section. We used the SFINCS flood model, which is an open access and open source flood model developed by Deltares and can be found (10.5281/zenodo.8038534, https://github.com/Deltares/SFINCS) 
+In this section, we describe how to perfom the flood hazard analysis used in the paper "[Funding rules that promote equity in climate adaptation outcomes](https://osf.io/preprints/osf/6ewmu)." using the rainfall and water levels derived in the previous section. We used the SFINCS flood model, which is an open access and open source flood model developed by Deltares and can be found (10.5281/zenodo.8038534, https://github.com/Deltares/SFINCS). The datasets required to reproduce the flood hazard modeling can be downloaded Data_Flood_Modeling (10.5281/zenodo.14251861), SFINCS files (10.5281/zenodo.14251308) and the output from the Statistical Framework generated from the previous section. 
 
 ### 1. SFINCS Set Up
 
