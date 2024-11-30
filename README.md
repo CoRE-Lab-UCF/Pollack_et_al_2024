@@ -239,4 +239,24 @@ The output of this code is the maximum water depths from the simulation at 1m re
 
 ### 5. Combination of Coastal and Pluvial Floodplains
 
-In this study, the flood hazard is simulated separately for each driver and then their floodplains are combined using the Matlab script "
+In this study, the flood hazard is simulated separately for each driver and then their floodplains are combined using the Matlab script "Combination_Indep_Floodplains.m" in "Scripts_Flood". Note that the paths of the independent floodplains need to be added and subfolders of the runs need to be named "RP_XXX" with corresponding Return Periods so the script produces the combined floodplains for all the Return Periods used in this study.
+
+**Input**: 
+- `'Max_WD_.mat'` for Rainfall simulations
+- `'Max_WD_.mat'` for Coastal Water Level simulations
+
+**Output**: 
+- `Max_WD_Comb_XXX.mat`
+
+### 6. Conversion from "*.mat" to ascii file
+
+We converted the Combined Flood Hazard matlab data files to ascii for the further analyses of this study. To do that, we used the script "mat2asciiWD.m" in "Scripts_Flood". Note that the paths of the inputs and outputs need to be modified in the script.
+
+**Input**: 
+- `'dem_subgrid_1m_nbd.asc'` from "Data_Flood_Modeling"
+- `Max_WD_Comb_XXX.mat` from the different Return Periods of the analysis. Note that only the path to this file is needed.
+
+**Output**: 
+- `Max_WD_WL_XXX.asc`
+
+
