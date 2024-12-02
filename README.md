@@ -250,7 +250,7 @@ In this study, the flood hazard is simulated separately for each driver and then
 
 ### 6. Conversion from "*.mat" to ascii file
 
-We converted the Combined Flood Hazard matlab data files to ascii for the further analyses of this study. To do that, we used the script "mat2asciiWD.m" in "Scripts_Flood". Note that the paths of the inputs and outputs need to be modified in the script.
+We converted the Combined Flood Hazard matlab data files to ascii for the further analyses of this study. To do that, we used the script "mat2asciiWD.m" in "Scripts_Flood". Note that the paths of the inputs and outputs need to be modified in the script. The final Flood Hazard layers in ascii format can be found in 10.5281/zenodo.14260629
 
 **Input**: 
 - `'dem_subgrid_1m_nbd.asc'` from "Data_Flood_Modeling"
